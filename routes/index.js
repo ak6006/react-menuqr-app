@@ -71,7 +71,7 @@ class MyStack extends Component {
                 <Drawer.Screen
                     name="login"
                     options={{
-                        headerShown: true, headerStyle:{position: 'relative', backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: "صاحب مطعم", headerTitle: "", headerLeft:  () => (<Image  style={styles.headerLogo} source={require('../assets/images/logo_sm.png')}/>),
+                        headerShown: true, headerStyle:{position: 'relative', backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: "صاحب مطعم", headerTitle: "",
                     }}
                     component={LoginWeb}
                 />
@@ -123,7 +123,7 @@ const screenOptions =  ({route,navigation}) => ({
     ),
     headerLeft:  () => (
         <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.goBack()}>
-            <FontAwesomeIcon icon={faArrowLeft} size={26} color={route.name === "try" ? "#1d4254" : "white"} />
+            <FontAwesomeIcon icon={faArrowLeft} size={26} color={route.name === "try" || route.name === "login" ? "#1d4254" : "white"} />
         </TouchableOpacity>
     ),
     gestureEnabled: true,
@@ -143,3 +143,6 @@ const screenOptions =  ({route,navigation}) => ({
     headerTitleAlign: "center",
     headerTransparent: true,   
 })
+
+// Header Left the logo
+// headerLeft: () => <Image style={styles.headerLogo} source={require('../assets/images/logo_sm.png')}/>
