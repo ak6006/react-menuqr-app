@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.menuqr">
+  package="com.teami.menuqr">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE"/>
@@ -20,16 +20,6 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-      </activity>
-
-      <activity
-        android:name="com.zoontek.RNBootSplashActivity"
-        android:theme="@style/BootTheme"
-        android:launchMode="singleTask">
-        <intent-filter>
-          <action android:name="android.intent.action.MAIN" />
-          <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
     </application>

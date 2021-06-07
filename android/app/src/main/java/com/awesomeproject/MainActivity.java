@@ -1,4 +1,4 @@
-package com.menuqr;
+package com.teami.menuqr;
 
 import android.os.Bundle;
 
