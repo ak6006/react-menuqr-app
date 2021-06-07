@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, Text, View, TouchableOpacity, AppRegistry } from 'react-native';
+import { StyleSheet, ImageBackground, Text, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
 import { WebView } from 'react-native-webview';
 import actuatedNormalize from '../Normalize';
 

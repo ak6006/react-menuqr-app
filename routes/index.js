@@ -77,7 +77,6 @@ class MyStack extends Component {
                 />
                 <Drawer.Screen
                     name="try"
-                    beforeRemove={() => console.log("leave")}
                     options={
                         ({navigation}) => ({
                             headerShown: true, headerStyle:{position: 'relative', backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: "QR Code Scanner", headerTitle: "", headerLeft:  () => (<TouchableOpacity style={styles.menuIcon} onPress={() => this.goBackFromTry(navigation)}><FontAwesomeIcon icon={faArrowLeft} size={26} color="#1d4254" /></TouchableOpacity>),
@@ -136,8 +135,6 @@ const screenOptions =  ({route,navigation}) => ({
         left: 0,
         right: 0,
         elevation: 0.1,
-        shadowOpacity: 0,
-        borderBottomWidth: 0,
     },
     headerTitleStyle: {color: "transparent"},
     headerTitleAlign: "center",
