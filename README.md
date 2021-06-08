@@ -26,9 +26,9 @@ You must have [Java SE Development Kit (JDK)](https://www.oracle.com/java/techno
 
 You must have [Xcode](https://developer.apple.com/xcode/resources/) installed in your computer.
 
-`brew install node`
-`brew install watchman`
-`sudo gem install cocoapods`
+`brew install node` <br>
+`brew install watchman` <br>
+`sudo gem install cocoapods` <br><br>
 
 `cd ios` (the ios directory in the project directory) <br>
 `pod install`
