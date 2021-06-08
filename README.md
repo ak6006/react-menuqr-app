@@ -46,4 +46,4 @@ You must have [Xcode](https://developer.apple.com/xcode/resources/) installed in
 ![Android emulator screenshot](https://github.com/ak6006/react-menuqr-app/blob/main/screenshots/android.jpg?raw=true) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![ios emulator screenshot](https://github.com/ak6006/react-menuqr-app/blob/main/screenshots/ios.png?raw=true)
 
-#### Developed by, Amr Eraky
+#### Developed by: [Amr Eraky](https://github.com/amribrahim1/)
