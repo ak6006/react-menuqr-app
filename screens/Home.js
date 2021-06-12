@@ -72,19 +72,22 @@ const styles = StyleSheet.create({
 		color: "#1d4254",
 		fontSize: actuatedNormalize(30),
 		letterSpacing: 2,
-		fontFamily: "Cairo-SemiBold"
+		fontFamily: "Cairo-SemiBold",
+		writingDirection: "rtl"
 	},
 	textSmall: {
 		marginTop: 5,
 		fontSize: 16,
 		margin: 2,
-		fontFamily: "Cairo-Regular"
+		fontFamily: "Cairo-Regular",
+		writingDirection: "rtl"
 	},
 	headerSmall: {
 		marginTop: 5,
 		color: "#1d4254",
 		fontSize: actuatedNormalize(20),
 		fontFamily: "Cairo-SemiBold",
-		margin: 5
+		margin: 5,
+		writingDirection: "rtl"
 	}
 });
