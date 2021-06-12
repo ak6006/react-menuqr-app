@@ -17,11 +17,11 @@ export default function App() {
 				/>
 			</View>
 			<View style={styles.texts}>
-				<Text style={styles.textHeader}>Contactless QR</Text>
-				<Text style={styles.textHeader}>Digital Menu</Text>
-				<Text style={styles.textSmall}>create a digital menu for your restaurantor cafe.</Text>
-				<Text style={styles.textSmall}>Engage more with your customers</Text>
-				<Text  style={styles.headerSmall}>Their mobile is your menu now !</Text>
+				<Text style={styles.textHeader}>قائمة رقمية QR</Text>
+				<Text style={styles.textHeader}>بدون تلامس</Text>
+				<Text style={{...styles.textSmall, marginTop: 15}}>قم بإنشاء قائمة رقمية لمطعمك أو مقهاك.</Text>
+				<Text style={styles.textSmall}>تفاعل أكثر مع عملائك.</Text>
+				<Text style={{...styles.headerSmall, marginTop: 15}}>هاتفهم المحمول هو قائمتك الآن!</Text>
 			</View>
 			</ImageBackground>
 		</SafeAreaView>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: 'center',
 		backgroundColor: "#154d68",
-		height: 300,
+		height: 250,
 		borderBottomLeftRadius: 30,
 		borderBottomRightRadius: 30
 	},
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 	texts: {
 		justifyContent: "center",
 		// alignItems: 'center',
-		margin: 40,
+		margin: 20,
 		marginLeft: 20,
 		marginRight: 20,
 		padding: 5,
@@ -68,22 +68,23 @@ const styles = StyleSheet.create({
 		borderBottomRightRadius: 30,
 	},
 	textHeader: {
+		marginTop: 5,
 		color: "#1d4254",
 		fontSize: actuatedNormalize(30),
-		fontWeight: "700",
 		letterSpacing: 2,
-		marginTop: 6,
-		marginBottom: 6
+		fontFamily: "Cairo-SemiBold"
 	},
 	textSmall: {
-		fontSize: 14,
+		marginTop: 5,
+		fontSize: 16,
 		margin: 2,
-
+		fontFamily: "Cairo-Regular"
 	},
 	headerSmall: {
+		marginTop: 5,
 		color: "#1d4254",
 		fontSize: actuatedNormalize(20),
-		fontWeight: "700",
+		fontFamily: "Cairo-SemiBold",
 		margin: 5
 	}
 });
