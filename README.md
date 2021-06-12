@@ -1,7 +1,7 @@
 # MenuQR React native App
 
-This project is a React JS version of [http://www.crewsa.net/](http://www.crewsa.net/).<br>
-was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React native app of [https://menuqr.teamigroup.com/](https://menuqr.teamigroup.com/).<br>
+was bootstrapped with [Create React native App](https://github.com/facebook/create-react-app).
 
 ## 1 - Doawnloading the app
 In the system terminal run: <br>
