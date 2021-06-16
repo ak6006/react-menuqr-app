@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 	},
 	textHeader: {
 		color: "#f7a722",
-		fontSize: actuatedNormalize(28),
+		fontSize: 28,
 		// fontWeight: "700",
 		letterSpacing: 2,
 		marginTop: 4,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'Cairo-Regular',
 	},
 	textSmall: {
-		fontSize: actuatedNormalize(18),
+		fontSize: 18,
 		margin: 2,
 		fontFamily: 'Cairo-Regular',
 		textAlign: "justify",
