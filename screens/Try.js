@@ -48,7 +48,7 @@ class Try extends Component {
 						<QRCodeScanner
 								onRead={this.handleBarCodeScanned}
 								containerStyle={{display: "flex", justifyContent: "center", alignItems: "center", flex: 1, width: "100%", }}
-								cameraStyle={{width: "90%"}}
+								cameraStyle={{width: 500, height: 500}}
 							/>
 					</View>
 				</ImageBackground>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
 	},
 	textHeader: {
 		color: "#154d68",
-		fontSize: actuatedNormalize(26),
+		fontSize: 26,
 		fontFamily: "Cairo-SemiBold",
 		letterSpacing: 2,
 		marginTop: 20,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 	},
     textHeaderBigger: {
         color: "#f7a722",
-		fontSize: actuatedNormalize(28),
+		fontSize: 28,
 		fontFamily: "Cairo-SemiBold",
 		letterSpacing: 2,
 		marginTop: 30,
