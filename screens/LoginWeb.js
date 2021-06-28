@@ -5,7 +5,7 @@ import { WebView  } from 'react-native-webview';
 export default function LoginWeb() {
     return (
         <WebView
-            source={{ uri: "https://test-menuqr.teamigroup.com/dashBoard" }}
+            source={{ uri: "https://almenuqr.com/dashBoard" }}
             geolocationEnabled={true}
         />
     )	
