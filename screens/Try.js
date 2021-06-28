@@ -39,20 +39,28 @@ class Try extends Component {
 			)
 		} else {
 			return (
-				<ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
-					<Text style={styles.textHeader}>جرب نسختك التجريبية الآن</Text>
-					<Text style={styles.textHeaderBigger}>افتح كاميرا هاتفك وقم بمسح الكود</Text>
-					<View style={styles.scan}>
+				<View style={styles.fullscreenScan}>
+					
+
+					<QRCodeScanner
+							onRead={this.handleBarCodeScanned}
+							containerStyle={{display: "flex", justifyContent: "center", alignItems: "center", flex: 1, width: "100%", }}
+							cameraStyle={{width: "100%", height: "100%"}}
+						/>
+				</View>
+				// <ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
+				// 	<Text style={styles.textHeader}>جرب نسختك التجريبية الآن</Text>
+				// 	<Text style={styles.textHeaderBigger}>افتح كاميرا هاتفك وقم بمسح الكود</Text>
+				// 	<View style={styles.scan}>
 						
 
-						<QRCodeScanner
-								onRead={this.handleBarCodeScanned}
-								containerStyle={{display: "flex", justifyContent: "center", alignItems: "center", flex: 1, width: "100%", }}
-								cameraStyle={{width: 500, height: 500, maxWidth: "80%", marginLeft: "10%", marginRight: "10%", maxHeight: "90%"}}
-							/>
-					</View>
-				</ImageBackground>
-		  
+				// 		<QRCodeScanner
+				// 				onRead={this.handleBarCodeScanned}
+				// 				containerStyle={{display: "flex", justifyContent: "center", alignItems: "center", flex: 1, width: "100%", }}
+				// 				cameraStyle={{width: 500, height: 500, maxWidth: "80%", marginLeft: "10%", marginRight: "10%", maxHeight: "90%"}}
+				// 			/>
+				// 	</View>
+				// </ImageBackground>
 			);
 		}
 	}
@@ -62,60 +70,63 @@ class Try extends Component {
 export default Try;
 
 const styles = StyleSheet.create({
-	backgroundImage: {	// and screen container
-		width: "100%",
-		height: "100%",
-		// justifyContent: "center",
-		alignItems: "center",
+	// backgroundImage: {	// and screen container
+	// 	width: "100%",
+	// 	height: "100%",
+	// 	// justifyContent: "center",
+	// 	alignItems: "center",
 		
-	},
-	container: {
-		width: "100%",
-		justifyContent: "center",
-		alignItems: "center",
-		paddingLeft: 40,
-		paddingRight: 40
-	},
-	textHeader: {
-		color: "#154d68",
-		fontSize: 26,
-		fontFamily: "Cairo-SemiBold",
-		letterSpacing: 2,
-		marginTop: 20,
-		marginBottom: 20,
-        textAlign: "center"
-	},
-    textHeaderBigger: {
-        color: "#f7a722",
-		fontSize: 28,
-		fontFamily: "Cairo-SemiBold",
-		letterSpacing: 2,
-		marginTop: 10,
-		marginBottom: 0,
-        textAlign: "center"
-    },
-	scan: {
-		flex: 1,
-		flexDirection: 'row',
-		justifyContent: 'center',
-	},
+	// },
+	// container: {
+	// 	width: "100%",
+	// 	justifyContent: "center",
+	// 	alignItems: "center",
+	// 	paddingLeft: 40,
+	// 	paddingRight: 40
+	// },
+	// textHeader: {
+	// 	color: "#154d68",
+	// 	fontSize: 26,
+	// 	fontFamily: "Cairo-SemiBold",
+	// 	letterSpacing: 2,
+	// 	marginTop: 20,
+	// 	marginBottom: 20,
+    //     textAlign: "center"
+	// },
+    // textHeaderBigger: {
+    //     color: "#f7a722",
+	// 	fontSize: 28,
+	// 	fontFamily: "Cairo-SemiBold",
+	// 	letterSpacing: 2,
+	// 	marginTop: 10,
+	// 	marginBottom: 0,
+    //     textAlign: "center"
+    // },
+	// scan: {
+	// 	flex: 1,
+	// 	flexDirection: 'row',
+	// 	justifyContent: 'center',
+	// },
 
 
-	centerText: {
+	// centerText: {
+	// 	flex: 1,
+	// 	fontSize: 18,
+	// 	padding: 32,
+	// 	color: '#777'
+	// },
+	// textBold: {
+	// 	fontWeight: '500',
+	// 	color: '#000'
+	// },
+	// buttonText: {
+	// 	fontSize: 21,
+	// 	color: 'rgb(0,122,255)'
+	// },
+	// buttonTouchable: {
+	// 	padding: 16
+	// },
+	fullscreenScan: {
 		flex: 1,
-		fontSize: 18,
-		padding: 32,
-		color: '#777'
-	},
-	textBold: {
-		fontWeight: '500',
-		color: '#000'
-	},
-	buttonText: {
-		fontSize: 21,
-		color: 'rgb(0,122,255)'
-	},
-	buttonTouchable: {
-		padding: 16
 	}
 });
