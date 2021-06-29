@@ -13,6 +13,6 @@ export default function actuatedNormalize(size) {
 	if (Platform.OS === 'ios') {
 	  	return Math.round(PixelRatio.roundToNearestPixel(newSize))
 	} else {
-	  	return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+	  	return Math.round(PixelRatio.roundToNearestPixel(newSize))
 	}
 }

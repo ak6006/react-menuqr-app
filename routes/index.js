@@ -10,6 +10,8 @@ import LoginWeb from '../screens/LoginWeb';
 import Try from '../screens/Try';
 import Search from '../screens/Search';
 
+import actuatedNormalize from '../Normalize';
+
 const Drawer = createDrawerNavigator();
 
 class MyStack extends Component {
@@ -40,6 +42,11 @@ class MyStack extends Component {
             <>
             <Drawer.Navigator
                 drawerPosition="right"
+                drawerStyle={{
+                    height: actuatedNormalize(300),
+                    width: "60%",
+                    borderBottomLeftRadius: 20
+                }}
                 drawerIcon={{
                     focused: true, color: "red", size: 20
                 }}
@@ -47,7 +54,7 @@ class MyStack extends Component {
                     inactiveTintColor: "#1d4254",
                     activeTintColor: '#1d4254',
                     itemStyle: { },
-                    labelStyle:{fontFamily:'Cairo-SemiBold', textAlign: 'right'}
+                    labelStyle:{ fontFamily:'Cairo-SemiBold', textAlign: 'right', fontSize: actuatedNormalize(13), padding: actuatedNormalize(2) }
                 }}
                 screenOptions= {({route,navigation}) => screenOptions({route,navigation})}
                 headerMode="float"
