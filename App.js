@@ -7,10 +7,17 @@
  */
 
 import React, { Component } from 'react';
+import { NativeModules, Platform } from 'react-native';
+import { Provider } from 'react-redux';
 import RNBootSplash from "react-native-bootsplash";
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { IntlProvider } from 'react-redux-multilingual'
 
+import configureStore from './store';
 import MyStack from './routes';
+import translations from './translations';
+
+const { store } = configureStore();
 
 class App extends Component {
   componentDidMount() {
@@ -22,13 +29,19 @@ class App extends Component {
       await RNBootSplash.hide({ fade: true });
       console.log("Bootsplash has been hidden successfully");
     });
+
   }
 
   render() {
     return (
-        <NavigationContainer theme={NavigationContainerTheme}>
-          <MyStack />
-        </NavigationContainer>
+      <Provider store={store}>
+      <IntlProvider translations={translations}>
+            <NavigationContainer theme={NavigationContainerTheme}>
+              <MyStack />
+            </NavigationContainer>
+          
+            </IntlProvider>
+  </Provider>
     );
   }
 };

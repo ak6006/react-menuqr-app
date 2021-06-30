@@ -1,10 +1,12 @@
 
 import React from 'react';
 import { StyleSheet, SafeAreaView, ImageBackground, Text, View, Image } from 'react-native';
+import { withTranslate } from 'react-redux-multilingual';
 
 import actuatedNormalize from '../Normalize';
 
-export default function App() {
+function Home({translate}) {
+	// const translate = this.props.translate;
 	return (
 		<SafeAreaView>
 			<ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
@@ -17,16 +19,18 @@ export default function App() {
 				/>
 			</View>
 			<View style={styles.texts}>
-				<Text style={styles.textHeader}>قائمة رقمية QR</Text>
-				<Text style={styles.textHeader}>بدون تلامس</Text>
-				<Text style={{...styles.textSmall, marginTop: 15}}>قم بإنشاء قائمة رقمية لمطعمك أو مقهاك.</Text>
-				<Text style={styles.textSmall}>تفاعل أكثر مع عملائك.</Text>
-				<Text style={{...styles.headerSmall, marginTop: 15}}>هاتفهم المحمول هو قائمتك الآن!</Text>
+				<Text style={styles.textHeader}>{translate('home1')}</Text>
+				<Text style={styles.textHeader}>{translate('home2')}</Text>
+				<Text style={{...styles.textSmall, marginTop: 15}}>{translate('home3')}</Text>
+				<Text style={styles.textSmall}>{translate('home4')}</Text>
+				<Text style={{...styles.headerSmall, marginTop: 15}}>{translate('home5')}</Text>
 			</View>
 			</ImageBackground>
 		</SafeAreaView>
 	);
 }
+
+export default withTranslate(Home);
 
 const styles = StyleSheet.create({
   	container: {
