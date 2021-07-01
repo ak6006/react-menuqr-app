@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, ImageBackground, Text, View, Image, TouchableOpacity, TextInput, ActivityIndicator, ScrollView,Keyboard } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { withTranslate } from 'react-redux-multilingual';
 
-export default class Search extends Component {
+class Search extends Component {
   	state= {
 		search: "",
         restaurants: [],
-        link: ""
+        link: "",
+        loading: false
 	}
 
     componentDidMount() {
@@ -18,24 +20,33 @@ export default class Search extends Component {
 	}
 
 	handleChange = (e, name) => {
-		this.setState({[name]: e})
-        
-        fetch(`https://menuqr.teamigroup.com/api/restaurantsInfo/${e}`)
-        .then(response => response.json())
-        .then(data => this.setState({restaurants: data.data}));
+		if (e !== '') {
+            this.setState({
+                [name]: e,
+                loading: true
+            })
+            
+            fetch(`https://menuqr.teamigroup.com/api/restaurantsInfo/${e}`)
+            .then(response => response.json())
+            .then(data => this.setState({
+                restaurants: data.data,
+                loading: false
+            }));
+        } else {
+            this.setState({ [name]: e })
+        }
 	}
 
     openMenu = link => {
         this.setState({
             link,
-            search: ""
         })
         this.props.setResClicked(true)
     }
 
 	render() {
 		// console.log(this.state)
-        const { resClicked } = this.props
+        const { resClicked, translate } = this.props
         if (resClicked) {
 			return (
 				<WebView
@@ -45,52 +56,53 @@ export default class Search extends Component {
 		} else {
 			return (
 				<ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
-					<View style={styles.container}>	
+					
                         <View style={styles.searchContainer}>
-                            <TouchableOpacity style={styles.menuIcon} onPress={() => this.props.navigation.goBack()}>
-                                <FontAwesomeIcon icon={faArrowLeft} size={26} color="#1d4254" />
-                            </TouchableOpacity>
                             <TextInput
                                 style={styles.input}
                                 onChangeText={e => this.handleChange(e, "search")}
                                 value={this.state.search}
-                                placeholder="ابحث باسم المطعم"
+                                placeholder={translate('SearchByRestaurant')}
                                 autoFocus
                             />
                         </View>
-                        <View style={styles.results}>
-                            {this.state.search === ""
+                        <ScrollView style={styles.results} onScroll={() => Keyboard.dismiss()} keyboardShouldPersistTaps='always'>
+                            {this.state.loading && <ActivityIndicator size="large" color="#1d4254" />}
+                            {this.state.loading
                                 ? null
-                                : this.state.restaurants.length === 0
-                                    ? <Text>No results found!</Text>
-                                    : <View>
-                                        <Text style={styles.noOfRestaurants}>{this.state.restaurants.length} restaurants found</Text> 
-                                        {this.state.restaurants.map(restaurant => 
-                                            <View style={styles.restaurantContainer} key={restaurant.id}>
-                                                <TouchableOpacity style={styles.restaurant} onPress={() => this.openMenu(restaurant.restaurantLink)}>
-                                                    {restaurant.restaurantImage === null 
-                                                        ? <Image
-                                                            style={styles.restaurantImage}
-                                                            source={require('../assets/images/restaurant-placeholder.png')}
-                                                        />
-                                                        : <Image
-                                                            style={styles.restaurantImage}
-                                                            source={{ uri: restaurant.restaurantImage }}
-                                                        />
-                                                    }
-                                                    
-                                                    <View>
-                                                        <Text style={styles.restaurantName}>{restaurant.restaurantName}</Text>
-                                                        <Text>{restaurant.restaurantAddress === null ? "العنوان غير معروف" : restaurant.restaurantAddress}</Text>
-                                                    </View>
-                                                    
-                                                </TouchableOpacity>   
-                                            </View>
-                                        )}
-                                    </View>
+                                : this.state.search === ""
+                                    ? null
+                                    : this.state.restaurants.length === 0
+                                        ? <Text>{translate('NoResults')}</Text>
+                                        : <View>
+                                            <Text style={styles.noOfRestaurants}>{this.state.restaurants.length} restaurants found</Text> 
+                                            {this.state.restaurants.map(restaurant => 
+                                                <View style={styles.restaurantContainer} key={restaurant.id}>
+                                                    <TouchableOpacity style={styles.restaurant} onPress={() => this.openMenu(restaurant.restaurantLink)}>
+                                                        {restaurant.restaurantImage === null 
+                                                            ? <Image
+                                                                style={styles.restaurantImage}
+                                                                source={require('../assets/images/restaurant-placeholder.png')}
+                                                            />
+                                                            : <Image
+                                                                style={styles.restaurantImage}
+                                                                source={{ uri: restaurant.restaurantImage }}
+                                                                onError={() => console.log("err")}
+                                                            />
+                                                        }
+                                                        
+                                                        <View>
+                                                            <Text style={styles.restaurantName}>{restaurant.restaurantName}</Text>
+                                                            <Text>{restaurant.restaurantAddress === null ? translate('unknownAddress') : restaurant.restaurantAddress}</Text>
+                                                        </View>
+                                                        
+                                                    </TouchableOpacity>   
+                                                </View>
+                                            )}
+                                        </View>
                             }
-                        </View>
-					</View>
+                        </ScrollView>
+					
 				</ImageBackground>
 		  
 			);
@@ -98,13 +110,13 @@ export default class Search extends Component {
   	}
 }
 
+export default withTranslate(Search);
+
 const styles = StyleSheet.create({
 	backgroundImage: {	// and screen container
 		width: "100%",
 		height: "100%",
-		// justifyContent: "center",
-		alignItems: "center",
-		
+        flex: 1
 	},
 	container: {
 		width: "100%",
@@ -116,28 +128,19 @@ const styles = StyleSheet.create({
 	},
     searchContainer: {
         width: "100%",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        marginTop: 10,
-        marginBottom: 10,
-        paddingLeft: 10,
-		paddingRight: 60,
     },
     results: {
         alignSelf: "baseline",
         width: "100%",
+        flex: 1,
         paddingLeft: 40,
 		paddingRight: 40,
     },
     input: {
 		height: 45,
-		width: "100%",
 		padding: 10,
 		margin: 12,
 		borderWidth: 1,
-		textAlign: "right",
 		fontSize: 14,
         fontFamily: "Cairo-Regular",
 		borderRadius: 10,
@@ -182,5 +185,6 @@ const styles = StyleSheet.create({
     restaurantName: {
         fontSize: 16,
         fontFamily: "Cairo-SemiBold",
+        textAlign: "left"
     },
 });

@@ -18,6 +18,8 @@ target 'MenuQR' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'react-native-restart', :path => '../node_modules/react-native-restart'
+
   target 'MenuQRTests' do
     inherit! :complete
     # Pods for testing

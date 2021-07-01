@@ -1,4 +1,5 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, I18nManager } from 'react-native';
+import RNRestart from 'react-native-restart';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IntlActions } from 'react-redux-multilingual'
 
@@ -17,7 +18,15 @@ export function handleSetLanguage () {
         try {
 			const value = await AsyncStorage.getItem('language');
 			if (value !== null) {
-                const userObj = JSON.parse(value)
+                if (value === "ar" && !I18nManager.isRTL) {
+                    I18nManager.forceRTL(true);
+                    RNRestart.Restart();
+                }
+                if (value === "en" && I18nManager.isRTL) {
+                    I18nManager.allowRTL(false);
+                    I18nManager.forceRTL(false);
+                    RNRestart.Restart();
+                }
                 return dispatch(IntlActions.setLocale(value))
 			} else {
                 const deviceLanguage =
@@ -35,7 +44,7 @@ export function handleSetLanguage () {
             }
 		} catch(e) {
 			console.log(e);
-            return dispatch(IntlActions.setLocale("ar"))
+            return dispatch(IntlActions.setLocale("en"))
 		}
     }
 }
@@ -44,6 +53,15 @@ export function handleChangeLanguage (language) {
     return async (dispatch) => {
         try {
             await AsyncStorage.setItem('language', language);
+            // if (language === "ar" && !I18nManager.isRTL) {
+            //     I18nManager.forceRTL(true);
+            //     RNRestart.Restart();
+            // }
+            // if (language === "en" && I18nManager.isRTL) {
+            //     I18nManager.allowRTL(false);
+            //     I18nManager.forceRTL(false);
+            //     RNRestart.Restart();
+            // }
             return dispatch(IntlActions.setLocale(language))
         } catch (e) {
             return dispatch(IntlActions.setLocale("ar"))

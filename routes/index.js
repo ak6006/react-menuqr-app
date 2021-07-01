@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, TouchableOpacity, NativeModules, Platform } from 'react-native';
 import { connect } from 'react-redux';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBars, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { withTranslate } from 'react-redux-multilingual';
 
-import { handleSetLanguage } from '../store/actionCreators/language';
+import { handleSetLanguage, handleChangeLanguage } from '../store/actionCreators/language';
 import Home from '../screens/Home';
 import About from '../screens/About';
 import LoginWeb from '../screens/LoginWeb';
@@ -22,6 +22,11 @@ class MyStack extends Component {
         fontsLoaded: false,
         scanned: false,
         resClicked: false
+    }
+
+    changeLanguage = () => {
+        const newLang = this.props.language === "ar" ? "en" : "ar";
+        this.props.dispatch(handleChangeLanguage(newLang))
     }
 
     componentDidMount() {
@@ -44,23 +49,15 @@ class MyStack extends Component {
     setResClicked = value => this.setState({resClicked: value})
 
     screenOptions =  ({route,navigation}) => ({
-        headerRight:  () => (
-            this.props.language === "ar"
-                ? <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.openDrawer()}>
-                    <FontAwesomeIcon icon={faBars} size={26} color={route.name === "login" || route.name === "register" || route.name === "restaurantOrCafe" || route.name === "try" || route.name === "restaurant" ? "#1d4254": "white"} />
-                </TouchableOpacity>
-                : <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.goBack()}>
-                    <FontAwesomeIcon icon={faArrowRight} size={26} color={route.name === "try" || route.name === "login" ? "#1d4254" : "white"} />
+        headerLeft:  () => (
+                <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.openDrawer()}>
+                    <FontAwesomeIcon icon={faBars} size={26} color={route.name === "login" || route.name === "register" || route.name === "restaurantOrCafe" || route.name === "try" || route.name === "restaurant" || route.name === "search" ? "#1d4254": "white"} />
                 </TouchableOpacity>
             
         ),
-        headerLeft:  () => (
-            this.props.language === "ar"
-                ? <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.goBack()}>
-                    <FontAwesomeIcon icon={faArrowLeft} size={26} color={route.name === "try" || route.name === "login" ? "#1d4254" : "white"} />
-                </TouchableOpacity>
-                : <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.openDrawer()}>
-                    <FontAwesomeIcon icon={faBars} size={26} color={route.name === "login" || route.name === "register" || route.name === "restaurantOrCafe" || route.name === "try" || route.name === "restaurant" ? "#1d4254": "white"} />
+        headerRight:  () => (
+                <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.goBack()}>
+                    <FontAwesomeIcon icon={this.props.language === "ar" ? faArrowLeft : faArrowRight} size={26} color={route.name === "try" || route.name === "login" ? "#1d4254" : "white"} />
                 </TouchableOpacity>
         ),
         gestureEnabled: true,
@@ -88,19 +85,32 @@ class MyStack extends Component {
             <Drawer.Navigator
                 drawerPosition={lang === "ar" ? "right" : "left"}
                 drawerStyle={{
-                    height: actuatedNormalize(300),
+                    height: actuatedNormalize(380),
                     width: "60%",
-                    borderBottomLeftRadius: lang === "ar" ? 20 : 0,
-                    borderBottomRightRadius: lang !== "ar" ? 20 : 0,
+                    borderBottomRightRadius: 20,
                 }}
                 drawerIcon={{
                     focused: true, color: "red", size: 20
+                }}
+                drawerContent={props => {
+                    return (
+                        <DrawerContentScrollView {...props}>
+                            <DrawerItemList {...props} />
+                            <DrawerItem
+                                {...props}
+                                onPress={this.changeLanguage}
+                                label={lang === "ar" ? "English" : "عربي"}
+                                style={{ ...props.style, backgroundColor: "rgba(0,0,0,0.15)", width: 110, alignSelf: "center", borderRadius: 20,  }}
+                                labelStyle={{ ...props.labelStyle, textAlign: "right", width: 70, fontFamily: "Cairo-Black", height: 30, lineHeight: 25, fontSize: 16 }}
+                            />
+                        </DrawerContentScrollView>
+                    )
                 }}
                 drawerContentOptions={{
                     inactiveTintColor: "#1d4254",
                     activeTintColor: '#1d4254',
                     itemStyle: { },
-                    labelStyle:{ fontFamily:'Cairo-SemiBold', textAlign: 'right', fontSize: actuatedNormalize(13), padding: actuatedNormalize(2) }
+                    labelStyle:{ fontFamily:'Cairo-SemiBold', textAlign: 'left', fontSize: actuatedNormalize(15), padding: actuatedNormalize(2) }
                 }}
                 screenOptions= {({route,navigation}) => this.screenOptions({route,navigation})}
                 headerMode="float"
@@ -112,7 +122,7 @@ class MyStack extends Component {
                     options={
                         ({navigation}) => ({
                             headerShown: true,
-                            headerStyle: {backgroundColor: "#154d68", elevation: 0}, headerTitle: "", drawerLabel: translate('home'), headerLeft:  () => (lang === "ar" ? null : <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.openDrawer()}><FontAwesomeIcon icon={faBars} size={26} color="white" /></TouchableOpacity>), headerRight:  () => (lang === "ar" ? <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.openDrawer()}><FontAwesomeIcon icon={faBars} size={26} color="white" /></TouchableOpacity> : null),
+                            headerStyle: {backgroundColor: "#154d68", elevation: 0}, headerTitle: "", drawerLabel: translate('home'), headerRight: () => null
                         })
                     }
                 />
@@ -134,7 +144,7 @@ class MyStack extends Component {
                     name="try"
                     options={
                         ({navigation}) => ({
-                            headerShown: true, headerStyle:{position: 'relative', backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: "QR Code Scanner", headerTitle: "", headerLeft:  () => (<TouchableOpacity style={styles.menuIcon} onPress={() => this.goBackFromTry(navigation)}><FontAwesomeIcon icon={faArrowLeft} size={26} color="#1d4254" /></TouchableOpacity>),
+                            headerShown: true, headerStyle:{position: 'relative', backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: "QR Code Scanner", headerTitle: "", headerRight:  () => (<TouchableOpacity style={styles.menuIcon} onPress={() => this.goBackFromTry(navigation)}><FontAwesomeIcon icon={this.props.language === "ar" ? faArrowLeft : faArrowRight} size={26} color="#1d4254" /></TouchableOpacity>),
                         })
                     }
                 >
@@ -144,7 +154,7 @@ class MyStack extends Component {
                     name="search"
                     options={
                         ({navigation}) => ({
-                            headerShown: this.state.resClicked, headerStyle:{backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: translate('searchRestaurant'), headerTitle: "", headerTitleStyle: {color: "white", fontFamily:'Cairo-SemiBold'}, headerRight:  () => (null), headerLeft:  () => (<TouchableOpacity style={styles.menuIcon} onPress={() => this.goBackFromSearch(navigation)}><FontAwesomeIcon name="arrow-back" icon={faArrowLeft} size={26} color="#1d4254" /></TouchableOpacity>),
+                            headerShown: true, headerStyle:{backgroundColor: "#e7e6e6", elevation: 0}, drawerLabel: translate('searchRestaurant'), headerTitle: "", headerTitleStyle: {color: "white", fontFamily:'Cairo-SemiBold'}, headerRight:  () => (<TouchableOpacity style={styles.menuIcon} onPress={() => this.goBackFromSearch(navigation)}><FontAwesomeIcon name="arrow-back" icon={this.props.language === "ar" ? faArrowLeft : faArrowRight} size={26} color="#1d4254" /></TouchableOpacity>),
                         })
                     }
                 >

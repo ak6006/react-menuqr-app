@@ -10,21 +10,19 @@ function Home({translate}) {
 	return (
 		<SafeAreaView>
 			<ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
-			
-			
-			<View style={styles.header}>
-				<Image
-						style={styles.logo}
-					source={require('../assets/images/logo_qrzebraH.png')}
-				/>
-			</View>
-			<View style={styles.texts}>
-				<Text style={styles.textHeader}>{translate('home1')}</Text>
-				<Text style={styles.textHeader}>{translate('home2')}</Text>
-				<Text style={{...styles.textSmall, marginTop: 15}}>{translate('home3')}</Text>
-				<Text style={styles.textSmall}>{translate('home4')}</Text>
-				<Text style={{...styles.headerSmall, marginTop: 15}}>{translate('home5')}</Text>
-			</View>
+				<View style={styles.header}>
+					<Image
+							style={styles.logo}
+						source={require('../assets/images/logo_qrzebraH.png')}
+					/>
+				</View>
+				<View style={styles.texts}>
+					<Text style={styles.textHeader}>{translate('home1')}</Text>
+					<Text style={styles.textHeader}>{translate('home2')}</Text>
+					<Text style={{...styles.textSmall, marginTop: 15}}>{translate('home3')}</Text>
+					<Text style={styles.textSmall}>{translate('home4')}</Text>
+					<Text style={{...styles.headerSmall, marginTop: 15}}>{translate('home5')}</Text>
+				</View>
 			</ImageBackground>
 		</SafeAreaView>
 	);
