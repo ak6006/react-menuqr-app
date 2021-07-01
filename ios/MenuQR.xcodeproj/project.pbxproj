@@ -14,6 +14,7 @@
 		70859D9201B5D907C39616FB /* libPods-MenuQR-MenuQRTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC58924DD77587F982A633C4 /* libPods-MenuQR-MenuQRTests.a */; };
 		7939D3326FB4E3BEAFE48D13 /* libPods-MenuQR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63501E7EEE964FF963B0E3C7 /* libPods-MenuQR.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		940ADEC6268E219E00A074A1 /* Cairo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 940ADEC5268E219E00A074A1 /* Cairo-Black.ttf */; };
 		9488BD14266E3DBC00DF6A31 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488BD13266E3DBB00DF6A31 /* BootSplash.storyboard */; };
 		94F87A2E266E6E8A004B4257 /* Cairo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F87A2D266E6E8A004B4257 /* Cairo-Regular.ttf */; };
 		94F87A30266E6E9D004B4257 /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F87A2F266E6E9D004B4257 /* Cairo-SemiBold.ttf */; };
@@ -26,6 +27,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = MenuQR;
+		};
+		940ADEBF268E1EF400A074A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940ADEBB268E1EF400A074A1 /* Restart.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = Restart;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -43,6 +51,8 @@
 		63501E7EEE964FF963B0E3C7 /* libPods-MenuQR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MenuQR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DAAC934BEC3FC17CFE29AB /* Pods-MenuQR-MenuQRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuQR-MenuQRTests.debug.xcconfig"; path = "Target Support Files/Pods-MenuQR-MenuQRTests/Pods-MenuQR-MenuQRTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MenuQR/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		940ADEBB268E1EF400A074A1 /* Restart.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Restart.xcodeproj; path = "../node_modules/react-native-restart/ios/Restart.xcodeproj"; sourceTree = "<group>"; };
+		940ADEC5268E219E00A074A1 /* Cairo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cairo-Black.ttf"; path = "assets/fonts/Cairo-Black.ttf"; sourceTree = "<group>"; };
 		9488BD13266E3DBB00DF6A31 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = MenuQR/BootSplash.storyboard; sourceTree = "<group>"; };
 		9488BD15266E403C00DF6A31 /* Cairo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cairo-Regular.ttf"; path = "../../MenuQR-MobileApp/assets/fonts/Cairo-Regular.ttf"; sourceTree = "<group>"; };
 		9488BD17266E40A900DF6A31 /* Cairo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cairo-SemiBold.ttf"; path = "../../MenuQR-mobile-app/android/app/src/main/assets/fonts/Cairo-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -119,6 +129,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				940ADEBB268E1EF400A074A1 /* Restart.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				940ADEC5268E219E00A074A1 /* Cairo-Black.ttf */,
 				94F87A2F266E6E9D004B4257 /* Cairo-SemiBold.ttf */,
 				94F87A2B266E6E0F004B4257 /* Cairo-Regular.ttf */,
 				94F87A2D266E6E8A004B4257 /* Cairo-Regular.ttf */,
@@ -148,6 +160,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* MenuQR.app */,
 				00E356EE1AD99517003FC87E /* MenuQRTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		940ADEBC268E1EF400A074A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				940ADEC0268E1EF400A074A1 /* libRestart.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +257,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 940ADEBC268E1EF400A074A1 /* Products */;
+					ProjectRef = 940ADEBB268E1EF400A074A1 /* Restart.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* MenuQR */,
@@ -244,6 +270,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		940ADEC0268E1EF400A074A1 /* libRestart.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestart.a;
+			remoteRef = 940ADEBF268E1EF400A074A1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -258,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94F87A30266E6E9D004B4257 /* Cairo-SemiBold.ttf in Resources */,
+				940ADEC6268E219E00A074A1 /* Cairo-Black.ttf in Resources */,
 				94F87A2E266E6E8A004B4257 /* Cairo-Regular.ttf in Resources */,
 				9488BD14266E3DBC00DF6A31 /* BootSplash.storyboard in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,

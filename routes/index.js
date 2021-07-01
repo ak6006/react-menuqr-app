@@ -85,7 +85,7 @@ class MyStack extends Component {
             <Drawer.Navigator
                 drawerPosition={lang === "ar" ? "right" : "left"}
                 drawerStyle={{
-                    height: actuatedNormalize(380),
+                    height: actuatedNormalize(420),
                     width: "60%",
                     borderBottomRightRadius: 20,
                 }}

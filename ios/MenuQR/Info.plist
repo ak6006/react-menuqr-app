@@ -45,6 +45,7 @@
 	<array>
 		<string>Cairo-SemiBold.ttf</string>
 		<string>Cairo-Regular.ttf</string>
+		<string>Cairo-Black.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>BootSplash</string>
