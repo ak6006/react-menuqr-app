@@ -26,7 +26,7 @@ class Search extends Component {
                 loading: true
             })
             
-            fetch(`https://menuqr.teamigroup.com/api/restaurantsInfo/${e}`)
+            fetch(`https://almenuqr.com/api/restaurantsInfo/${e}`)
             .then(response => response.json())
             .then(data => this.setState({
                 restaurants: data.data,

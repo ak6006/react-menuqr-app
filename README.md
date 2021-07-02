@@ -1,6 +1,6 @@
 # MenuQR React native App
 
-This project is a React native app of [https://menuqr.teamigroup.com/](https://menuqr.teamigroup.com/).<br>
+This project is a React native app of [https://almenuqr.com/](https://almenuqr.com/).<br>
 was bootstrapped with [Create React native App](https://github.com/facebook/create-react-app).
 
 ## 1 - Doawnloading the app

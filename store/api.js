@@ -1,1 +1,1 @@
-export const apiUrl = "https://menuqr.teamigroup.com/api"
+export const apiUrl = "https://almenuqr.com/api"
