@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-         <key>UIRequiresFullScreen</key>
-         <true/>
 	<key>CFBundleDisplayName</key>
 	<string>MENUQR</string>
 	<key>CFBundleExecutable</key>
@@ -40,7 +38,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>You have to allow access camera to scan the QR code.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>MENUQR you need to allow access to your location for delivery</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Cairo-SemiBold.ttf</string>
@@ -53,6 +51,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
