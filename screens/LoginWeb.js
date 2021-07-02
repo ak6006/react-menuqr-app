@@ -7,6 +7,7 @@ export default function LoginWeb() {
         <WebView
             source={{ uri: "https://almenuqr.com/dashBoard" }}
             geolocationEnabled={true}
+            // support for File Upload is missing
         />
     )	
 }

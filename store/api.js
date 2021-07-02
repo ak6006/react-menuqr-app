@@ -1,0 +1,1 @@
+export const apiUrl = "https://menuqr.teamigroup.com/api"
