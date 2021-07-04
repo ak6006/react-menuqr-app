@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Take pictures for certain activities</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Select pictures for certain activities</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -43,6 +39,8 @@
 	<string>You have to allow access camera to scan the QR code.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>MENUQR you need to allow access to your location for delivery</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Select pictures for certain activities</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Cairo-SemiBold.ttf</string>
