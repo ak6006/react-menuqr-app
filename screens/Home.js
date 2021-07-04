@@ -50,17 +50,20 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: 'center',
 		backgroundColor: "#154d68",
-		height: 250,
+		height: "20%",
 		borderBottomLeftRadius: 30,
 		borderBottomRightRadius: 30
 	},
 	logo: {
-		height: 100,
+		height: "60%",
 		resizeMode: "contain",
 		justifyContent: "center"
 	},
 	texts: {
-		justifyContent: "center",
+		justifyContent: "flex-start",
+		flexDirection: "row",
+		flexWrap: "wrap",
+		width: "70%",
 		// alignItems: 'center',
 		margin: 20,
 		marginLeft: 20,
@@ -71,6 +74,8 @@ const styles = StyleSheet.create({
 	},
 	textHeader: {
 		marginTop: 5,
+		marginLeft: 10,
+		marginRight: 10,
 		color: "#1d4254",
 		fontSize: actuatedNormalize(30),
 		letterSpacing: 2,
@@ -80,6 +85,7 @@ const styles = StyleSheet.create({
 	},
 	textSmall: {
 		marginTop: 5,
+		marginLeft: 10,
 		fontSize: 16,
 		margin: 2,
 		fontFamily: "Cairo-Regular",
@@ -88,6 +94,7 @@ const styles = StyleSheet.create({
 	},
 	headerSmall: {
 		marginTop: 5,
+		marginRight: 10,
 		color: "#1d4254",
 		fontSize: actuatedNormalize(20),
 		fontFamily: "Cairo-SemiBold",
