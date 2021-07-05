@@ -6,6 +6,7 @@
         // General
         search: "search",
         restaurant: "restaurant",
+        restaurants: "restaurants",
         // Drawer
         home: 'Home',
         about: "About",
@@ -27,7 +28,8 @@
         // Search Screen
         SearchByRestaurant: "Search by restaurant name",
         NoResults: "No results found!",
-        unknownAddress: "unknown Address"
+        unknownAddress: "unknown Address",
+        found: "Found"
       }
     },
     ar: {
@@ -37,6 +39,7 @@
         // General
         search: "بحث",
         restaurant: "مطعم",
+        restaurants: "مطاعم",
         // Drawer
         home: 'الرئيسية',
         about: "من نحن",
@@ -58,7 +61,8 @@
         // Search Screen
         SearchByRestaurant: "ابحث باسم المطعم",
         NoResults: "لا توجد نتائج!",
-        unknownAddress: "العنوان غير معروف"
+        unknownAddress: "العنوان غير معروف",
+        found: "موجودة"
       }
     }
   }

@@ -10,17 +10,23 @@ class Search extends Component {
 		search: "",
         restaurants: [],
         link: "",
-        loading: false
+        loading: true
 	}
 
     componentDidMount() {
 		this._unsubscribe = this.props.navigation.addListener('focus', () => {
 			this.props.setResClicked(false)
 		});
+        fetch(`https://almenuqr.com/api/restaurantsInfo`)
+        .then(response => response.json())
+        .then(data => this.setState({
+            restaurants: data.data,
+            loading: false
+        }));
 	}
 
 	handleChange = (e, name) => {
-		if (e !== '') {
+		// if (e !== '') {
             this.setState({
                 [name]: e,
                 loading: true
@@ -32,9 +38,9 @@ class Search extends Component {
                 restaurants: data.data,
                 loading: false
             }));
-        } else {
-            this.setState({ [name]: e })
-        }
+        // } else {
+        //     this.setState({ [name]: e })
+        // }
 	}
 
     openMenu = link => {
@@ -67,6 +73,38 @@ class Search extends Component {
                             />
                         </View>
                         <ScrollView style={styles.results} onScroll={() => Keyboard.dismiss()} keyboardShouldPersistTaps='always'>
+                            {this.state.loading && <ActivityIndicator size="large" color="#1d4254" />}
+                            {this.state.restaurants.length === 0
+                                        ? this.state.loading ? null : <Text>{translate('NoResults')}</Text>
+                                        : <View>
+                                            <Text style={styles.noOfRestaurants}>{this.state.restaurants.length} {translate('restaurants')} {translate('found')}</Text> 
+                                            {this.state.restaurants.map(restaurant => 
+                                                <View style={styles.restaurantContainer} key={restaurant.id}>
+                                                    <TouchableOpacity style={styles.restaurant} onPress={() => this.openMenu(restaurant.restaurantLink)}>
+                                                        {restaurant.restaurantImage === null 
+                                                            ? <Image
+                                                                style={styles.restaurantImage}
+                                                                source={require('../assets/images/restaurant-placeholder.png')}
+                                                            />
+                                                            : <Image
+                                                                style={styles.restaurantImage}
+                                                                source={{ uri: restaurant.restaurantImage }}
+                                                                onError={() => console.log("err")}
+                                                            />
+                                                        }
+                                                        
+                                                        <View style={{flex: 1, justifyContent: "flex-start"}}>
+                                                            <Text style={styles.restaurantName}>{restaurant.restaurantName}</Text>
+                                                            <Text style={styles.restaurantAddress}>{restaurant.restaurantAddress === null ? translate('unknownAddress') : restaurant.restaurantAddress}</Text>
+                                                        </View>
+                                                        
+                                                    </TouchableOpacity>   
+                                                </View>
+                                            )}
+                                        </View>
+                            }
+                        </ScrollView>
+                        {/* <ScrollView style={styles.results} onScroll={() => Keyboard.dismiss()} keyboardShouldPersistTaps='always'>
                             {this.state.loading && <ActivityIndicator size="large" color="#1d4254" />}
                             {this.state.loading
                                 ? null
@@ -101,7 +139,7 @@ class Search extends Component {
                                             )}
                                         </View>
                             }
-                        </ScrollView>
+                        </ScrollView> */}
 					
 				</ImageBackground>
 		  
@@ -157,7 +195,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "rgb(200, 200, 200)",
         fontSize: 18,
-        color: "#1d4254"
+        color: "#1d4254",
     },
     restaurantContainer: {
         width: "100%",
@@ -187,4 +225,7 @@ const styles = StyleSheet.create({
         fontFamily: "Cairo-SemiBold",
         textAlign: "left"
     },
+    restaurantAddress: {
+        textAlign: "left"
+    }
 });
