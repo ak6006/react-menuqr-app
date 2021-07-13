@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
 		fontSize: actuatedNormalize(30),
 		letterSpacing: 2,
 		fontFamily: "Cairo-SemiBold",
-		writingDirection: "rtl",
 		textAlign: "left"
 	},
 	textSmall: {
@@ -90,7 +89,6 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		margin: 2,
 		fontFamily: "Cairo-Regular",
-		writingDirection: "ltr",
 		textAlign: "left"
 	},
 	headerSmall: {
@@ -100,7 +98,6 @@ const styles = StyleSheet.create({
 		fontSize: actuatedNormalize(20),
 		fontFamily: "Cairo-SemiBold",
 		margin: 5,
-		writingDirection: "ltr",
 		textAlign: "left"
 	}
 });
