@@ -85,7 +85,7 @@ class MyStack extends Component {
             <Drawer.Navigator
                 drawerPosition={lang === "ar" ? "right" : "left"}
                 drawerStyle={{
-                    height: actuatedNormalize(420),
+                    height: actuatedNormalize(470),
                     width: "60%",
                     borderBottomRightRadius: 20,
                 }}
@@ -110,7 +110,7 @@ class MyStack extends Component {
                     inactiveTintColor: "#1d4254",
                     activeTintColor: '#1d4254',
                     itemStyle: { },
-                    labelStyle:{ fontFamily:'Cairo-SemiBold', textAlign: 'left', fontSize: actuatedNormalize(15), padding: actuatedNormalize(2) }
+                    labelStyle:{ fontFamily:'Cairo-SemiBold', textAlign: 'left', fontSize: actuatedNormalize(15), margin: actuatedNormalize(1) }
                 }}
                 screenOptions= {({route,navigation}) => this.screenOptions({route,navigation})}
                 headerMode="float"

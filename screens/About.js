@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView, ImageBackground, Text, View, Image, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 import { withTranslate } from 'react-redux-multilingual';
 import actuatedNormalize from '../Normalize';
 
-function About({ translate }) {
+function About({ translate, language }) {
 	return (
 		<SafeAreaView>
 			<ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
@@ -18,16 +19,16 @@ function About({ translate }) {
 					</View>
 					<View style={styles.texts}>
 						<Text style={styles.textHeader}>{translate('Brief about the company')}</Text>
-						<Text style={styles.textSmall}>
+						<Text style={{...styles.textSmall, writingDirection: language === "ar" ? "rtl" : "auto"}}>
 							{translate('about1')}
 						</Text>
-						<Text style={styles.textSmall}>
+						<Text style={{...styles.textSmall, writingDirection: language === "ar" ? "rtl" : "auto"}}>
 							{translate('about2')}
 						</Text>
-						<Text style={styles.textSmall}>
+						<Text style={{...styles.textSmall, writingDirection: language === "ar" ? "rtl" : "auto"}}>
 							{translate('about3')}
 						</Text>
-						<Text style={styles.textSmall}>
+						<Text style={{...styles.textSmall, writingDirection: language === "ar" ? "rtl" : "auto"}}>
 							{translate('about4')}
 						</Text>
 					</View>
@@ -38,7 +39,13 @@ function About({ translate }) {
 	);
 }
 
-export default withTranslate(About);
+const mapDispatchToProps = ({Intl}) => {
+    return {
+        language: Intl.locale
+    }
+}
+
+export default connect(mapDispatchToProps)(withTranslate(About))
 
 const styles = StyleSheet.create({
 	backgroundImage: {
@@ -89,7 +96,8 @@ const styles = StyleSheet.create({
 		marginTop: 4,
 		marginBottom: 4,
 		fontFamily: 'Cairo-Regular',
-		textAlign: "center"
+		textAlign: "center",
+		alignSelf: "center"
 	},
 	textSmall: {
 		fontSize: 18,

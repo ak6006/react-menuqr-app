@@ -19,7 +19,7 @@ function Home({translate}) {
 				<View style={styles.texts}>
 					<Text style={styles.textHeader}>{translate('home1')}</Text>
 					<Text style={styles.textHeader}>{translate('home2')}</Text>
-					<Text style={{...styles.textSmall, marginTop: 15,textAlign: 'left'}}>{translate('home3')}</Text>
+					<Text style={styles.textSmall}>{translate('home3')}</Text>
 					
 					<Text style={styles.textSmall}>{translate('home4')}</Text>
 					<Text style={{...styles.headerSmall, marginTop: 15}}>{translate('home5')}</Text>
@@ -62,9 +62,9 @@ const styles = StyleSheet.create({
 	},
 	texts: {
 		justifyContent: "flex-start",
-		flexDirection: "row",
+		// flexDirection: "row",
 		flexWrap: "wrap",
-		width: "70%",
+		width: "100%",
 		// alignItems: 'center',
 		margin: 20,
 		marginLeft: 20,
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
 	},
 	textSmall: {
 		marginTop: 5,
-		marginLeft: 10,
-		fontSize: 16,
+		marginLeft: 20,
+		fontSize: actuatedNormalize(16),
 		margin: 2,
 		fontFamily: "Cairo-Regular",
 		textAlign: "left"
