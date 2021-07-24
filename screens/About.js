@@ -81,13 +81,11 @@ const styles = StyleSheet.create({
 	},
 	texts: {
 		justifyContent: "center",
-		alignItems: "flex-end",
+		alignItems: "flex-start",
 		margin: 40,
 		marginLeft: 20,
 		marginRight: 20,
 		padding: 5,
-		borderBottomLeftRadius: 30,
-		borderBottomRightRadius: 30,
 	},
 	textHeader: {
 		color: "#f7a722",
