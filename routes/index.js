@@ -85,8 +85,7 @@ class MyStack extends Component {
             <Drawer.Navigator
                 drawerPosition={lang === "ar" ? "right" : "left"}
                 drawerStyle={{
-                    height: actuatedNormalize(470),
-                    width: "60%",
+                    height: actuatedNormalize(400),
                     borderBottomRightRadius: 20,
                 }}
                 drawerIcon={{
@@ -100,8 +99,8 @@ class MyStack extends Component {
                                 {...props}
                                 onPress={this.changeLanguage}
                                 label={lang === "ar" ? "English" : "عربي"}
-                                style={{ ...props.style, backgroundColor: "rgba(0,0,0,0.15)", width: 110, alignSelf: "center", borderRadius: 20,  }}
-                                labelStyle={{ ...props.labelStyle, textAlign: "right", width: 70, fontFamily: "Cairo-Black", height: 30, lineHeight: 25, fontSize: 16 }}
+                                style={{ ...props.style, backgroundColor: "rgba(0,0,0,0.15)", width: "100%", alignSelf: "center" }}
+                                labelStyle={{ ...props.labelStyle, textAlign: "center", fontFamily: "Cairo-Black", height: 30, lineHeight: 25, fontSize: 16 }}
                             />
                         </DrawerContentScrollView>
                     )
