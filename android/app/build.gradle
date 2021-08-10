@@ -134,7 +134,7 @@ android {
         applicationId "com.teami.menuqr"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion 30//rootProject.ext.targetSdkVersion
-        versionCode 10
+        versionCode 11
         versionName "1.0"
         missingDimensionStrategy 'react-native-camera', 'general'
         ndk {
