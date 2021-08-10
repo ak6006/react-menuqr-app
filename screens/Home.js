@@ -24,7 +24,7 @@ function Home({translate, props}) {
 					<Text style={styles.textSmall}>{translate('home3')}</Text>
 					
 					<Text style={styles.textSmall}>{translate('home4')}</Text>
-					<Text style={{...styles.headerSmall, marginTop: 15}}>{translate('home5')}</Text>
+					<Text style={{...styles.headerSmall, marginTop: 15, width: "100%"}}>{translate('home5')}</Text>
 				</View>
 				<View style={{justifyContent: "center", alignItems: "center"}}>
 					<TouchableOpacity style={styles.btnContainer} onPress={() => props.navigation.navigate('try')}>
