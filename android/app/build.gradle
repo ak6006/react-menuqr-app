@@ -121,7 +121,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
+    ndkVersion '22.1.7171670' //rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -133,10 +133,13 @@ android {
     defaultConfig {
         applicationId "com.teami.menuqr"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
+        targetSdkVersion 30//rootProject.ext.targetSdkVersion
+        versionCode 10
         versionName "1.0"
         missingDimensionStrategy 'react-native-camera', 'general'
+        ndk {
+            debugSymbolLevel 'FULL'
+        }
     }
     splits {
         abi {
@@ -163,7 +166,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
@@ -224,5 +227,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+//android.buildTypes.release.ndk.debugSymbolLevel = { SYMBOL_TABLE | FULL }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
