@@ -117,14 +117,15 @@ class MyStack extends Component {
                 
                 <Drawer.Screen
                     name="home"
-                    component={Home}
                     options={
                         ({navigation}) => ({
                             headerShown: true,
                             headerStyle: {backgroundColor: "#154d68", elevation: 0}, headerTitle: "", drawerLabel: translate('home'), headerRight: () => null
                         })
                     }
-                />
+                >
+                    {(props) => <Home props={props} />}
+                </Drawer.Screen>
                 <Drawer.Screen
                     name="about"
                     options={{

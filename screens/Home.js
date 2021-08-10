@@ -1,12 +1,14 @@
 
 import React from 'react';
-import { StyleSheet, SafeAreaView, ImageBackground, Text, View, Image } from 'react-native';
+import { StyleSheet, SafeAreaView, ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native';
 import { withTranslate } from 'react-redux-multilingual';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faQrcode, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import actuatedNormalize from '../Normalize';
 
-function Home({translate}) {
-	// const translate = this.props.translate;
+function Home({translate, props}) {
+	// console.log(props.navigation.navigate)
 	return (
 		<SafeAreaView>
 			<ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
@@ -23,6 +25,16 @@ function Home({translate}) {
 					
 					<Text style={styles.textSmall}>{translate('home4')}</Text>
 					<Text style={{...styles.headerSmall, marginTop: 15}}>{translate('home5')}</Text>
+				</View>
+				<View style={{justifyContent: "center", alignItems: "center"}}>
+					<TouchableOpacity style={styles.btnContainer} onPress={() => props.navigation.navigate('try')}>
+						<FontAwesomeIcon icon={faQrcode} size={26} color="#1d4254" style={{marginEnd: 10}} />
+						<Text style={styles.btnText}>Scan Menu QR</Text>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.btnContainer} onPress={() => props.navigation.navigate('search')}>
+						<FontAwesomeIcon icon={faSearch} size={26} color="#1d4254" style={{marginEnd: 10}} />
+						<Text style={styles.btnText}>{translate('searchRestaurant')}</Text>
+					</TouchableOpacity>
 				</View>
 			</ImageBackground>
 		</SafeAreaView>
@@ -102,5 +114,20 @@ const styles = StyleSheet.create({
 		fontFamily: "Cairo-SemiBold",
 		margin: 5,
 		textAlign: "left"
-	}
+	},
+	btnContainer: {
+		flexDirection: "row",
+		marginTop: 10,
+		backgroundColor: "#f9a624",
+		height: 50,
+		width: "70%",
+		alignItems: "center",
+		justifyContent: "center",
+		borderRadius: 10
+	},
+	btnText: {
+		color: "#fff",
+		fontFamily: "Cairo-SemiBold",
+		fontSize: 24,
+	},
 });
